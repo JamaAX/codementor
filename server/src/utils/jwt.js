@@ -1,0 +1,10 @@
+const jwt = require("jsonwebtoken");
+
+const JWT_SECRET = process.env.JWT_SECRET || "dev-secret";
+const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || "7d";
+
+function signToken(id) {
+  return jwt.sign({ id }, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
+}
+
+module.exports = { signToken };
