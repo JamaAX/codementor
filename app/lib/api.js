@@ -26,6 +26,7 @@ async function request(path, { method = "GET", body, token } = {}) {
     throw error;
   }
   return data;
+  
 }
 
 export const api = {
