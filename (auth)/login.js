@@ -8,8 +8,8 @@ import {
   KeyboardAvoidingView,
   Platform,
   ActivityIndicator,
-  SafeAreaView,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useAuth } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
 
@@ -17,13 +17,28 @@ export default function Login() {
   const router = useRouter();
   const { login, loading } = useAuth();
   const { colors } = useTheme();
-  const [email, setEmail] = useState("");
+
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errMsg, setErrMsg] = useState("");
 
   const onSubmit = async () => {
-    if (!email || !password) return;
-    await login({ email, password });
-    router.replace("/(tabs)");
+    setErrMsg("");
+    if (!username || !password) {
+      setErrMsg("Please enter username and password.");
+      return;
+    }
+
+    try {
+      await login(username.trim(), password);
+      router.replace("/(tabs)");
+    } catch (err) {
+      const msg =
+        err?.response?.data?.message ||
+        err?.message ||
+        "Login failed. Try again.";
+      setErrMsg(msg);
+    }
   };
 
   return (
@@ -50,14 +65,13 @@ export default function Login() {
           >
             <View className="gap-2">
               <Text style={{ color: colors.text }} className="font-semibold">
-                Email
+                Username
               </Text>
               <TextInput
-                value={email}
-                onChangeText={setEmail}
+                value={username}
+                onChangeText={setUsername}
                 autoCapitalize="none"
-                keyboardType="email-address"
-                placeholder="you@example.com"
+                placeholder="your username"
                 placeholderTextColor="#6b7280"
                 className="rounded-2xl px-4 py-3"
                 style={{
@@ -88,6 +102,12 @@ export default function Login() {
                 }}
               />
             </View>
+
+            {errMsg ? (
+              <Text style={{ color: "#EF4444" }} className="font-semibold">
+                {errMsg}
+              </Text>
+            ) : null}
 
             <Pressable
               onPress={onSubmit}
