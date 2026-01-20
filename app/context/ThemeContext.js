@@ -9,7 +9,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { NativeWindStyleSheet } from "nativewind";
 
 const ThemeContext = createContext();
-
 const light = {
   scheme: "light",
   bg: "#f9fafb",
@@ -33,6 +32,7 @@ const dark = {
   accent: "#a855f7",
   accentStrong: "#c084fc",
 };
+
 
 export function ThemeProvider({ children }) {
   const [scheme, setScheme] = useState("dark");
@@ -71,6 +71,7 @@ export function ThemeProvider({ children }) {
       console.warn("Theme save failed", err);
     }
   };
+  
 
   const value = useMemo(
     () => ({
@@ -86,6 +87,7 @@ export function ThemeProvider({ children }) {
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 }
+
 
 export function useTheme() {
   const ctx = useContext(ThemeContext);
