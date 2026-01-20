@@ -100,7 +100,7 @@ export default function Register() {
                 onChangeText={setPassword}
                 secureTextEntry
                 placeholder="••••••••"
-                placeholderTextColor="#6b7280"
+                placeholderTextColor="#677084"
                 className="rounded-2xl px-4 py-3"
                 style={{
                   backgroundColor: colors.input,
