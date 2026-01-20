@@ -8,6 +8,7 @@ import {
   Pressable,
   Alert,
   Linking,
+  
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRouter } from "expo-router";
@@ -177,3 +178,4 @@ export default function Settings() {
     </SafeAreaView>
   );
 }
+
