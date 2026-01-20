@@ -4,6 +4,7 @@ const API_URL =
 async function request(path, { method = "GET", body, token } = {}) {
   const res = await fetch(`${API_URL}${path}`, {
     method,
+    
     headers: {
       "Content-Type": "application/json",
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
