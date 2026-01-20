@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useMemo,
   useState,
+  
 } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Alert } from "react-native";
@@ -16,6 +17,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [initializing, setInitializing] = useState(true);
   const [loading, setLoading] = useState(false);
+  
 
   useEffect(() => {
     (async () => {
@@ -32,6 +34,7 @@ export function AuthProvider({ children }) {
       }
     })();
   }, []);
+  
 
   const refreshProfile = async (tokenOverride) => {
     try {
@@ -49,6 +52,7 @@ export function AuthProvider({ children }) {
       return null;
     }
   };
+  
 
   const login = async ({ email, password }) => {
     setLoading(true);
