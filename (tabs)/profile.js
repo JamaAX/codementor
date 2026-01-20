@@ -15,15 +15,18 @@ export default function Profile() {
         <View
           style={{ backgroundColor: colors.accent }}
           className="pt-12 pb-16 px-6 rounded-b-[40px]"
+            
         >
           <View className="flex-row justify-between items-center">
             <View>
               <Text className="text-white text-3xl font-bold">Account</Text>
+            
               <Text className="text-purple-200 mt-1">Manage your identity</Text>
             </View>
             {/* Top right icon placeholder like the chart icon in your image */}
             <Pressable
               onPress={() => router.push("/(tabs)/settings")}
+
               className="bg-white/10 p-3 rounded-2xl border border-white/20"
             >
               <Text className="text-white">⚙️</Text>
@@ -151,3 +154,4 @@ export default function Profile() {
     </SafeAreaView>
   );
 }
+
