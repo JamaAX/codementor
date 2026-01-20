@@ -29,6 +29,7 @@ export default function Layout() {
     >
       <Tabs.Screen
         name="index"
+
         options={{
           tabBarLabel: "Ask",
           tabBarIcon: ({ color, focused }) => (
@@ -97,3 +98,4 @@ export default function Layout() {
     </Tabs>
   );
 }
+
