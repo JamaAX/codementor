@@ -49,6 +49,7 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
+
         name="history"
         options={{
           tabBarLabel: "History",
@@ -69,6 +70,7 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
+
         name="profile"
         options={{
           tabBarLabel: "Profile",
@@ -89,6 +91,7 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
+
         name="settings"
         options={{
           // hidden from tab bar; navigated via Profile screen
@@ -98,4 +101,5 @@ export default function Layout() {
     </Tabs>
   );
 }
+
 
